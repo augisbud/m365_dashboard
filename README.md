@@ -7,11 +7,10 @@ I'd recommend you to use Arduino 1.6.6
 https://www.arduino.cc/en/Main/OldSoftwareReleases
 # Products Used
 Arduino Pro Mini  
-1n4148 Diode  
-120 ohm resistor  
-USB Programmer to flash the Arduino  
-Xiaomi M365 Electric Scooter  
-I2c oled 0.96 inch screen  
-3d Printed bracket
+I2C OLED 0.96" Screen  
+FTD1232 Usb Programmer 
+3d Printed Bracket
+1N4148 Diode  
+120ohm Resistor       
 
 Estimated price is around 10$ (Inluding Printed Parts).
