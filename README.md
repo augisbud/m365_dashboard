@@ -18,3 +18,6 @@ https://www.arduino.cc/en/Main/OldSoftwareReleases
 
 # Physical Connections  
 ![alt text](https://camo.githubusercontent.com/a912641249173768ae60670e843c62294d06da4f/68747470733a2f2f656c656374726f2e636c75622f646174612f666f72756d2f6d657373616765732f34323633312f696d616765732f31313636302d313238302e6a7067)  
+
+# Known Issues  
+Sometimes the Arduino Freezes, a watchdog is in place but doesn't always trigger.  
