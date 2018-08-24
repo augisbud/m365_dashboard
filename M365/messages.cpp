@@ -28,7 +28,6 @@ void MessagesClass::Process(){
       default:
         messages[i] = DROP;
         break;
-
     }
   }
 }
