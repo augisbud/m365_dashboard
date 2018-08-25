@@ -21,3 +21,15 @@ https://www.arduino.cc/en/Main/OldSoftwareReleases
 
 # Known Issues  
 Sometimes the Arduino Freezes, a watchdog is in place but doesn't always trigger.  
+
+# Screen caps
+# Soldering, soldered directly to the cable coming from the MCU
+5V To Red  
+GND To Black
+BUS To Yellow
+![alt text](https://i.imgur.com/3ZwcrIJ.jpg)  
+A video on how everything is soldered may come soon.
+# UI
+UI pictures from version 0.2  
+![alt text](https://i.imgur.com/8ekMdIo.jpg)  
+More pictures are coming soon.
