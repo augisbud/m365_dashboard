@@ -32,4 +32,5 @@ A video on how everything is soldered may come soon.
 # UI
 UI pictures from version 0.2  
 ![alt text](https://i.imgur.com/8ekMdIo.jpg)  
+![alt text](https://i.imgur.com/AHLVTcu.jpg)  
 More pictures are coming soon.
