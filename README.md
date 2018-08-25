@@ -24,9 +24,9 @@ Sometimes the Arduino Freezes, a watchdog is in place but doesn't always trigger
 
 # Screen caps
 # Soldering, soldered directly to the cable coming from the MCU
-5V To Red  
-GND To Black
-BUS To Yellow
+5V To Red    
+GND To Black  
+BUS To Yellow  
 ![alt text](https://i.imgur.com/3ZwcrIJ.jpg)  
 A video on how everything is soldered may come soon.
 # UI
