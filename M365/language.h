@@ -1,4 +1,5 @@
-#define Language ENG
+#define Language ENG //English
+//#defina Language FRA //French
 
 #if Language == ENG
   #define defaultFont System5x7mod
