@@ -48,3 +48,52 @@
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
 #endif
+
+#if Language == FRA
+  #define defaultFont System5x7mod
+
+  const char noBUS1[] PROGMEM = {"BUS non"};
+  const char noBUS2[] PROGMEM = {"connecté!"};
+  const char noBUS3[] PROGMEM = {"Pas de données"};
+  const char noBUS4[] PROGMEM = {"à afficher!"};
+
+  const char confScr1[] PROGMEM = {"Gros speedométre: "};
+  const char confScr2[] PROGMEM = {"Gros speedo.: "};
+  const char confScr2a[] PROGMEM = {"  VITESSE"};
+  const char confScr2b[] PROGMEM = {"ACTUELLE"};
+  const char confScr3[] PROGMEM = {"Alerte Batterie: "};
+  const char confScr4[] PROGMEM = {"Alerte Batt.: "};
+  const char confScr5[] PROGMEM = {"Informations batterie"};
+  const char confScr6[] PROGMEM = {"Configure M365"};
+  const char confScr7[] PROGMEM = {"Enregistrer et quitter"};
+
+  const char infoScr1[] PROGMEM = {"Distance Totale"};
+  const char infoScr2[] PROGMEM = {"Allumée depuis :"};
+
+  const char battScr[] PROGMEM = {">>> Freiner pour sortir <<<"};
+
+  const char M365CfgScr1[] PROGMEM = {"Contrôle régulateur: "};
+  const char M365CfgScr2[] PROGMEM = {"MAJ Régulateur"};
+  const char M365CfgScr3[] PROGMEM = {"Allumer feu arrière:    "};
+  const char M365CfgScr4[] PROGMEM = {"Maj feu arrière"};
+  const char M365CfgScr5[] PROGMEM = {"KERS:        "};
+  const char M365CfgScr6[] PROGMEM = {"Maj KERS"};
+  const char M365CfgScr7[] PROGMEM = {"Sortir"};
+
+  const char l_Weak[] PROGMEM =   {"  LEGER"};
+  const char l_Medium[] PROGMEM = {"MOYEN"};
+  const char l_Strong[] PROGMEM = {"DUR"};
+
+  const char l_Yes[] PROGMEM = {"OUI"};
+  const char l_No[] PROGMEM =  {" NON"};
+  const char l_On[] PROGMEM =  {" Allumé"};
+  const char l_Off[] PROGMEM = {"Eteint"};
+
+  const char l_km[] PROGMEM = {"km"};
+  const char l_kmh[] PROGMEM = {"km/h"};
+  const char l_mah[] PROGMEM = {"mAh"};
+  const char l_v[] PROGMEM = {"V"};
+  const char l_a[] PROGMEM = {"A"};
+  const char l_c[] PROGMEM = {"C"};
+  const char l_t[] PROGMEM = {"T"};
+#endif
