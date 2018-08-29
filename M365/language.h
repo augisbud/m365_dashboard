@@ -60,7 +60,7 @@
 
   const char confScr1[] PROGMEM = {"Gros speedométre: "};
   const char confScr2[] PROGMEM = {"Gros speedo.: "};
-  const char confScr2a[] PROGMEM = {"  VITESSE"};
+  const char confScr2a[] PROGMEM = {" VITESSE"};
   const char confScr2b[] PROGMEM = {"ACTUELLE"};
   const char confScr3[] PROGMEM = {"Alerte Batterie: "};
   const char confScr4[] PROGMEM = {"Alerte Batt.: "};
@@ -82,12 +82,12 @@
   const char M365CfgScr7[] PROGMEM = {"Sortir"};
 
   const char l_Weak[] PROGMEM =   {"  LEGER"};
-  const char l_Medium[] PROGMEM = {"MOYEN"};
-  const char l_Strong[] PROGMEM = {"DUR"};
+  const char l_Medium[] PROGMEM = {"  MOYEN"};
+  const char l_Strong[] PROGMEM = {"  DUR"};
 
-  const char l_Yes[] PROGMEM = {"OUI"};
-  const char l_No[] PROGMEM =  {" NON"};
-  const char l_On[] PROGMEM =  {" Allumé"};
+  const char l_Yes[] PROGMEM = {"   OUI"};
+  const char l_No[] PROGMEM =  {"   NON"};
+  const char l_On[] PROGMEM =  {"Allumé"};
   const char l_Off[] PROGMEM = {"Eteint"};
 
   const char l_km[] PROGMEM = {"km"};
