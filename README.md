@@ -5,7 +5,7 @@ I2C OLED 0.96" Screen
 FTD1232 Usb Programmer   
 3d Printed Bracket  
 1N4148 Diode  
-120ohm Resistor       
+0.25w 120ohm Resistor       
 
 Estimated price is around 10$ (Inluding Printed Parts).
 
