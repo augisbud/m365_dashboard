@@ -2,6 +2,12 @@
 
 #include "SSD1306Ascii.h"
 #include "SSD1306AsciiWire.h"
+
+#include "fonts/m365.h"
+#include "fonts/System5x7mod.h"
+#include "fonts/stdNumb.h"
+#include "fonts/bigNumb.h"
+
 #include <EEPROM.h>
 
 #include "language.h"
