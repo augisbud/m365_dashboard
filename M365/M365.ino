@@ -34,10 +34,15 @@ void setup() {
     EEPROM.put(4, bigWarn);
   }
 
+#ifdef DISPLAY_I2C
   Wire.begin();
   Wire.setClock(400000L);
-
   display.begin(&Adafruit128x64, 0x3C);
+#endif
+#ifdef DISPLAY_SPI
+  display.begin(&Adafruit128x64, PIN_CS, PIN_DC, PIN_RST);
+#endif
+  
   display.setFont(m365);
   displayClear(0, true);
   display.setCursor(0, 0);

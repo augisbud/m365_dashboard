@@ -1,8 +1,20 @@
 #include "WatchDog.h"
 
-#include "SSD1306Ascii.h"
-#include "SSD1306AsciiWire.h"
+// Select either SPI or I2C(Wire) Display Mode
+//#define DISPLAY_SPI
+#define DISPLAY_I2C
 
+#include "SSD1306Ascii.h"
+#ifdef DISPLAY_SPI
+  #include <SPI.h>
+  #include "SSD1306AsciiSpi.h"
+  #define PIN_CS  4
+  #define PIN_RST 3
+  #define PIN_DC  5
+#endif
+#ifdef DISPLAY_I2C
+  #include "SSD1306AsciiWire.h"
+#endif
 #include "fonts/m365.h"
 #include "fonts/System5x7mod.h"
 #include "fonts/stdNumb.h"
@@ -38,7 +50,13 @@ volatile int oldThrottleVal = -1;
 
 unsigned long timer = 0; 
 
+#ifdef DISPLAY_SPI
+SSD1306AsciiSpi display;
+#endif
+#ifdef DISPLAY_I2C
 SSD1306AsciiWire display;
+#endif
+
 
 byte WDTcounts = 0;
 void(* resetFunc) (void) = 0;
