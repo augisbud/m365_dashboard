@@ -217,6 +217,7 @@ void displayFSM() {
   int throttleVal = -1;
 
   int tmp_0, tmp_1;
+  int _speed;
   _speed = abs(S23CB0.speed);
   //Custom Wheel size, check the top of defines.h
   #ifdef CUSTOM_WHELL_SIZE
