@@ -32,6 +32,12 @@ volatile int oldThrottleVal = -1;
 
 unsigned long timer = 0; 
 
+//#define CUSTOM_WHELL_SIZE;
+
+#ifdef CUSTOM_WHELL_SIZE
+  const int WHELL_SIZE = 100; //10"
+#endif
+
 SSD1306AsciiWire display;
 
 byte WDTcounts = 0;
