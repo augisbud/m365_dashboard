@@ -35,5 +35,5 @@ UI pictures from version 0.2
 ![alt text](https://i.imgur.com/AHLVTcu.jpg)  
 More pictures are coming soon.
 # Contributors
-Trankilloman
+Trankilloman  
 Саша sasha1804sk@gmail.com
