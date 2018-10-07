@@ -218,12 +218,13 @@ void displayFSM() {
 
   int tmp_0, tmp_1;
   int _speed;
-  _speed = abs(S23CB0.speed);
+  _speed = abs(S23CB0.speed) / 1000;
   //Custom Wheel size, check the top of defines.h
   #ifdef CUSTOM_WHELL_SIZE
     _speed = _speed * WHELL_SIZE / 85;
+    _speed = abs(_speed);
   #endif
-  m365_info.sph = _speed / 1000;                  // speed
+  m365_info.sph = _speed;                  // speed
   m365_info.spl = abs(S23CB0.speed) % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current
   m365_info.curl = abs(S25C31.current) % 100;
