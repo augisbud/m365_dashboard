@@ -49,7 +49,7 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-# else if Language == FRA
+#elif Language == FRA
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS non"};
@@ -96,7 +96,7 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#else if Language == RU
+#elif Language == RU
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"Ytn"};
