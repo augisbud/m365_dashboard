@@ -1,5 +1,6 @@
 #define Language ENG //English
 //#define Language FRA //French
+//#define Language RU //Russian, use together with the russian font in libraries folder
 
 #if Language == ENG
   #define defaultFont System5x7mod
@@ -95,4 +96,51 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
+#else if Language == RU
+  #define defaultFont System5x7mod
+
+  const char noBUS1[] PROGMEM = {"Ytn"};
+  const char noBUS2[] PROGMEM = {"Cdzpb"};
+  const char noBUS3[] PROGMEM = {"c"};
+  const char noBUS4[] PROGMEM = {"cfvjrfnjv!"};
+  
+  const char confScr1[] PROGMEM = {"Cgbljvtnh: "};
+  const char confScr2[] PROGMEM = {"Ht;.Cgbljv.:"};
+  const char confScr2a[] PROGMEM = {"CRJHJCNM"};
+  const char confScr2b[] PROGMEM = {"  NJR   "};
+  const char confScr3[] PROGMEM = {"Ghtleght;ltybt:"};
+  const char confScr4[] PROGMEM = {"Ghtl. ?fnfhtb: "};
+  const char confScr5[] PROGMEM = {"Bya. J ?fnfhtb"};
+  const char confScr6[] PROGMEM = {"Yfcnhjqrf"};
+  const char confScr7[] PROGMEM = {"Cj[hfybnm B Dsqnb"};
+
+  const char infoScr1[] PROGMEM = {"Ghj,tu"};
+  const char infoScr2[] PROGMEM = {"Dhtvz hf,jns"};
+
+  const char battScr[] PROGMEM = {">>Njhvjp lkz ds[jlf<<"};
+
+  const char M365CfgScr1[] PROGMEM = {"Rhebp rjynhjkm: "};
+  const char M365CfgScr2[] PROGMEM = {">>J,yjdbnm rhebp<<"};
+  const char M365CfgScr3[] PROGMEM = {"Pflybq Ajyfhm: "};
+  const char M365CfgScr4[] PROGMEM = {">>J,yjdbnm Ajyfhm<<"};
+  const char M365CfgScr5[] PROGMEM = {"Htregthfwbz: "};
+  const char M365CfgScr6[] PROGMEM = {">>J,yjdbnm htr.<<"};
+  const char M365CfgScr7[] PROGMEM = {"Cj[hfybnm B Dsqnb"};
+
+  const char l_Weak[] PROGMEM =   {" CKF,J"};
+  const char l_Medium[] PROGMEM = {"CHTLYT"};
+  const char l_Strong[] PROGMEM = {"CBKMYJ"};
+
+  const char l_Yes[] PROGMEM = {" LF"};
+  const char l_No[] PROGMEM =  {"YTN"};
+  const char l_On[] PROGMEM =  {" DRK"};
+  const char l_Off[] PROGMEM = {"DSRK"};
+
+  const char l_km[] PROGMEM = {"RV"};
+  const char l_kmh[] PROGMEM = {"RV/X"};
+  const char l_mah[] PROGMEM = {"vFx"};
+  const char l_v[] PROGMEM = {"D"};
+  const char l_a[] PROGMEM = {"F"};
+  const char l_c[] PROGMEM = {"C"};
+  const char l_t[] PROGMEM = {"N"};
 #endif

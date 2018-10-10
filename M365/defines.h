@@ -58,6 +58,12 @@ SSD1306AsciiWire display;
 #endif
 
 
+//#define CUSTOM_WHELL_SIZE;
+
+#ifdef CUSTOM_WHELL_SIZE
+  const int WHELL_SIZE = 100; //10"
+#endif
+
 byte WDTcounts = 0;
 void(* resetFunc) (void) = 0;
 
