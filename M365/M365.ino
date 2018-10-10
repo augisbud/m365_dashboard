@@ -21,7 +21,7 @@ void setup() {
   XIAOMI_PORT.begin(115200);
 
   byte cfgID = EEPROM.read(0);
-  if (cfgID = 128) {
+  if (cfgID == 128) {
     autoBig = EEPROM.read(1);
     warnBatteryPercent = EEPROM.read(2);
     bigMode = EEPROM.read(3);
