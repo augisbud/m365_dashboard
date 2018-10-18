@@ -26,12 +26,14 @@ void setup() {
     warnBatteryPercent = EEPROM.read(2);
     bigMode = EEPROM.read(3);
     bigWarn = EEPROM.read(4);
+	  WhellSize = EEPROM.read(5);
   } else {
     EEPROM.put(0, 128);
     EEPROM.put(1, autoBig);
     EEPROM.put(2, warnBatteryPercent);
     EEPROM.put(3, bigMode);
     EEPROM.put(4, bigWarn);
+	  EEPROM.put(5, WhellSize);
   }
 
 #ifdef DISPLAY_I2C
@@ -222,14 +224,17 @@ void displayFSM() {
   int throttleVal = -1;
 
   int tmp_0, tmp_1;
-  //Custom Wheel size, check the top of defines.h
-  int _speed;
+  
+  //Custom Wheel size.
+  float _speed;
   _speed = abs(S23CB0.speed);
-  #ifdef CUSTOM_WHELL_SIZE
-    _speed = _speed * WHELL_SIZE / 85;
-  #endif
-  m365_info.sph = _speed / 1000;                  // speed
-  m365_info.spl = _speed % 1000 / 100;
+  
+  if (WhellSize) {
+    _speed = round(_speed * 10 / 8.5); // 10" Whell
+  }; 
+  
+  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
+  m365_info.spl = (unsigned int) _speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
@@ -310,6 +315,14 @@ void displayFSM() {
           }
           break;
         case 6:
+		      cfgWhellSize = !cfgWhellSize;
+          if (cfgWhellSize)
+			      WhellSize = true; //10"
+          else
+			      WhellSize = false; //8,5"
+          EEPROM.put(5, WhellSize);
+		  break;
+        case 7:
           oldBrakeVal = brakeVal;
           oldThrottleVal = throttleVal;
           timer = millis() + LONG_PRESS;
@@ -317,7 +330,7 @@ void displayFSM() {
           break;
       } else
       if ((brakeVal == 1) && (oldBrakeVal != 1) && (throttleVal == -1) && (oldThrottleVal == -1)) {               // brake max + throttle min = change menu position
-        if (sMenuPos < 6)
+        if (sMenuPos < 7)
           sMenuPos++;
           else
           sMenuPos = 0;
@@ -390,7 +403,7 @@ void displayFSM() {
           break;
       }
 
-      display.setCursor(0, 5);
+    display.setCursor(0, 5);
 
       if (sMenuPos == 5)
         display.print((char)0x7E);
@@ -399,21 +412,37 @@ void displayFSM() {
 
       display.print((const __FlashStringHelper *) M365CfgScr6);
 
-      display.setCursor(0, 6);
+    display.setCursor(0, 6);
+    
+    if (sMenuPos == 6)
+        display.print((char)0x7E);
+        else
+        display.print(" ");
+  
+      display.print((const __FlashStringHelper *) M365CfgScr7);
+      switch (cfgWhellSize) {
+        case 1:
+          display.print((const __FlashStringHelper *) l_10inch);
+          break;
+        default:
+          display.print((const __FlashStringHelper *) l_85inch);
+          break;
+      }
+      //display.setCursor(0, 7);
 
-      for (int i = 0; i < 25; i++) {
+      /*for (int i = 0; i < 25; i++) {
         display.setCursor(i * 5, 6);
         display.print('-');
-      }
+      }*/
 
       display.setCursor(0, 7);
       
-      if (sMenuPos == 6)
+      if (sMenuPos == 7)
         display.print((char)0x7E);
         else
         display.print(" ");
 
-      display.print((const __FlashStringHelper *) M365CfgScr7);
+      display.print((const __FlashStringHelper *) M365CfgScr8);
 
       oldBrakeVal = brakeVal;
       oldThrottleVal = throttleVal;
@@ -1140,4 +1169,3 @@ unsigned int calcCs(unsigned char * data, unsigned char len) {
 
   return cs;
 }
-
