@@ -32,7 +32,7 @@
   const char M365CfgScr5[] PROGMEM = {"KERS:        "};
   const char M365CfgScr6[] PROGMEM = {"Update KERS"};
   const char M365CfgScr8[] PROGMEM = {"Exit"};
-  const char M365CfgScr7[] PROGMEM = {"Whell Size:     "};
+  const char M365CfgScr7[] PROGMEM = {"Wheel Size:     "};
 
   const char l_85inch[] PROGMEM = {" 8,5\""};
   const char l_10inch[] PROGMEM = {"  10\""};
@@ -83,7 +83,7 @@
   const char M365CfgScr5[] PROGMEM = {"KERS:        "};
   const char M365CfgScr6[] PROGMEM = {"Maj KERS"};
   const char M365CfgScr8[] PROGMEM = {"Sortir"};
-  const char M365CfgScr7[] PROGMEM = {"Whell Size:     "};
+  const char M365CfgScr7[] PROGMEM = {"Wheel Size:     "};
 
   const char l_85inch[] PROGMEM = {" 8,5\""};
   const char l_10inch[] PROGMEM = {"  10\""};
@@ -134,7 +134,7 @@
   const char M365CfgScr5[] PROGMEM = {"Htregthfwbz: "};
   const char M365CfgScr6[] PROGMEM = {">>J,yjdbnm htr.<<"};
   const char M365CfgScr8[] PROGMEM = {"Cj[hfybnm B Dsqnb"};
-  const char M365CfgScr7[] PROGMEM = {"Whell Size:     "};
+  const char M365CfgScr7[] PROGMEM = {"Wheel Size:     "};
 
   const char l_85inch[] PROGMEM = {" 8,5\""};
   const char l_10inch[] PROGMEM = {"  10\""};
