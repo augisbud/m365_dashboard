@@ -631,6 +631,13 @@ void displayFSM() {
 
       display.print((const __FlashStringHelper *) confScr7);
 
+      display.setCursor(0, 8);
+
+      if (menuPos == 7)
+        display.print((char)0x7E);
+      else
+        display.print(" ");
+
       oldBrakeVal = brakeVal;
       oldThrottleVal = throttleVal;
  
