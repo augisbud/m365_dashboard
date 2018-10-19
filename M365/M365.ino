@@ -26,14 +26,14 @@ void setup() {
     warnBatteryPercent = EEPROM.read(2);
     bigMode = EEPROM.read(3);
     bigWarn = EEPROM.read(4);
-	  WhellSize = EEPROM.read(5);
+    WhellSize = EEPROM.read(5);
   } else {
     EEPROM.put(0, 128);
     EEPROM.put(1, autoBig);
     EEPROM.put(2, warnBatteryPercent);
     EEPROM.put(3, bigMode);
     EEPROM.put(4, bigWarn);
-	  EEPROM.put(5, WhellSize);
+    EEPROM.put(5, WhellSize);
   }
 
 #ifdef DISPLAY_I2C
@@ -315,13 +315,9 @@ void displayFSM() {
           }
           break;
         case 6:
-		      cfgWhellSize = !cfgWhellSize;
-          if (cfgWhellSize)
-			      WhellSize = true; //10"
-          else
-			      WhellSize = false; //8,5"
+          WhellSize = !WhellSize;
           EEPROM.put(5, WhellSize);
-		  break;
+	  break;
         case 7:
           oldBrakeVal = brakeVal;
           oldThrottleVal = throttleVal;
@@ -420,7 +416,7 @@ void displayFSM() {
         display.print(" ");
   
       display.print((const __FlashStringHelper *) M365CfgScr7);
-      switch (cfgWhellSize) {
+      switch (WhellSize) {
         case 1:
           display.print((const __FlashStringHelper *) l_10inch);
           break;
