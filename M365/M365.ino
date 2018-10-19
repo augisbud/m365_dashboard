@@ -26,14 +26,14 @@ void setup() {
     warnBatteryPercent = EEPROM.read(2);
     bigMode = EEPROM.read(3);
     bigWarn = EEPROM.read(4);
-    WhellSize = EEPROM.read(5);
+    WheelSize = EEPROM.read(5);
   } else {
     EEPROM.put(0, 128);
     EEPROM.put(1, autoBig);
     EEPROM.put(2, warnBatteryPercent);
     EEPROM.put(3, bigMode);
     EEPROM.put(4, bigWarn);
-    EEPROM.put(5, WhellSize);
+    EEPROM.put(5, WheelSize);
   }
 
 #ifdef DISPLAY_I2C
@@ -229,8 +229,8 @@ void displayFSM() {
   float _speed;
   _speed = abs(S23CB0.speed);
   
-  if (WhellSize) {
-    _speed = round(_speed * 10 / 8.5); // 10" Whell
+  if (WheelSize) {
+    _speed = _speed * 10 / 8.5; // 10" Whell
   }; 
   
   m365_info.sph = (unsigned int) _speed / 1000;                  // speed
@@ -315,8 +315,8 @@ void displayFSM() {
           }
           break;
         case 6:
-          WhellSize = !WhellSize;
-          EEPROM.put(5, WhellSize);
+          WheelSize = !WheelSize;
+          EEPROM.put(5, WheelSize);
 	  break;
         case 7:
           oldBrakeVal = brakeVal;
@@ -416,7 +416,7 @@ void displayFSM() {
         display.print(" ");
   
       display.print((const __FlashStringHelper *) M365CfgScr7);
-      switch (WhellSize) {
+      switch (WheelSize) {
         case 1:
           display.print((const __FlashStringHelper *) l_10inch);
           break;
