@@ -169,7 +169,7 @@
   const char confScr2[] PROGMEM = {"Big speedo.: "};
   const char confScr2a[] PROGMEM = {"VELOCIDAD"};
   const char confScr2b[] PROGMEM = {"ACTUAL"};
-  const char confScr3[] PROGMEM = {"Alarma baterÍa : "};
+  const char confScr3[] PROGMEM = {"Alarma batería : "};
   const char confScr4[] PROGMEM = {"Gran alar. bat.: "};
   const char confScr5[] PROGMEM = {"Información "};
   const char confScr6[] PROGMEM = {"Configurar M365"};
