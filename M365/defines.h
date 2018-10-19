@@ -44,7 +44,6 @@ byte sMenuPos = 0;
 bool cfgCruise = false;
 bool cfgTailight = false;
 byte cfgKERS = 0;
-bool cfgWhellSize = false;
 
 volatile int oldBrakeVal = -1;
 volatile int oldThrottleVal = -1;
