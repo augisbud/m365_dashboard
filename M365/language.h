@@ -1,6 +1,7 @@
 #define Language ENG //English
 //#define Language FRA //French
 //#define Language RU //Russian, use together with the russian font in libraries folder
+//#define Language ES //Spanish
 
 #if Language == ENG
   #define defaultFont System5x7mod
@@ -155,4 +156,56 @@
   const char l_a[] PROGMEM = {"F"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"N"};
+
+  #elif Language == ES
+  #define defaultFont System5x7mod
+
+    const char noBUS1[] PROGMEM = {"BUS no"};
+  const char noBUS2[] PROGMEM = {"¡conectado!"};
+  const char noBUS3[] PROGMEM = {"No datos a"};
+  const char noBUS4[] PROGMEM = {"¡pantalla!"};
+
+  const char confScr1[] PROGMEM = {"Gran velocímetro: "};
+  const char confScr2[] PROGMEM = {"Big speedo.: "};
+  const char confScr2a[] PROGMEM = {"VELOCIDAD"};
+  const char confScr2b[] PROGMEM = {"ACTUAL"};
+  const char confScr3[] PROGMEM = {"Alarma batería : "};
+  const char confScr4[] PROGMEM = {"Gran alar. bat.: "};
+  const char confScr5[] PROGMEM = {"Información "};
+  const char confScr6[] PROGMEM = {"Configurar M365"};
+  const char confScr7[] PROGMEM = {"Grabar y salir"};
+
+  const char infoScr1[] PROGMEM = {"Distancia total"};
+  const char infoScr2[] PROGMEM = {"Tiempo de encendido"};
+
+  const char battScr[] PROGMEM = {">>> Freno para salir <<<"};
+
+  const char M365CfgScr1[] PROGMEM = {"Control de crucero: "};
+  const char M365CfgScr2[] PROGMEM = {"Actualizar cruzero"};
+  const char M365CfgScr3[] PROGMEM = {"Luz trasera SI: "};
+  const char M365CfgScr4[] PROGMEM = {"Actual. luz tras."};
+  const char M365CfgScr5[] PROGMEM = {"KERS:        "};
+  const char M365CfgScr6[] PROGMEM = {"Actualizar KERS"};
+  const char M365CfgScr8[] PROGMEM = {"Salir"};
+  const char M365CfgScr7[] PROGMEM = {"Tamaño Rueda:   "};
+
+  const char l_85inch[] PROGMEM = {" 8,5\""};
+  const char l_10inch[] PROGMEM = {"  10\""};
+
+  const char l_Weak[] PROGMEM =   {" DEBIL"};
+  const char l_Medium[] PROGMEM = {" MEDIO"};
+  const char l_Strong[] PROGMEM = {"FUERTE"};
+
+  const char l_Yes[] PROGMEM = {" SI"};
+  const char l_No[] PROGMEM =  {" NO"};
+  const char l_On[] PROGMEM =  {" ON"};
+  const char l_Off[] PROGMEM = {"OFF"};
+
+  const char l_km[] PROGMEM = {"km"};
+  const char l_kmh[] PROGMEM = {"km/h"};
+  const char l_mah[] PROGMEM = {"mAh"};
+  const char l_v[] PROGMEM = {"V"};
+  const char l_a[] PROGMEM = {"A"};
+  const char l_c[] PROGMEM = {"C"};
+  const char l_t[] PROGMEM = {"T"};
 #endif
