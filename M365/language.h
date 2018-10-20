@@ -134,11 +134,11 @@
   const char M365CfgScr4[] PROGMEM = {">>J,yjdbnm Ajyfhm<<"};
   const char M365CfgScr5[] PROGMEM = {"Htregthfwbz: "};
   const char M365CfgScr6[] PROGMEM = {">>J,yjdbnm htr.<<"};
-  const char M365CfgScr8[] PROGMEM = {"Cj[hfybnm B Dsqnb"};
-  const char M365CfgScr7[] PROGMEM = {"Wheel Size:     "};
-
-  const char l_85inch[] PROGMEM = {" 8,5\""};
-  const char l_10inch[] PROGMEM = {"  10\""};
+  const char M365CfgScr8[] PROGMEM = {"--------Dsqnb-------"};
+  const char M365CfgScr7[] PROGMEM = {"Hfpvth rjktcf:  "};
+  
+  const char l_85inch[] PROGMEM = {"8.5\""};
+  const char l_10inch[] PROGMEM = {" 10\""};
 
   const char l_Weak[] PROGMEM =   {" CKF,J"};
   const char l_Medium[] PROGMEM = {"CHTLYT"};
