@@ -57,7 +57,7 @@ SSD1306AsciiSpi display;
 SSD1306AsciiWire display;
 #endif
 
-bool WhellSize = false; //whell 8,5"
+bool WheelSize = false; //whell 8,5"
 
 byte WDTcounts = 0;
 void(* resetFunc) (void) = 0;
