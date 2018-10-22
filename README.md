@@ -29,6 +29,10 @@ GND To Black
 BUS To Yellow  
 ![alt text](https://i.imgur.com/3ZwcrIJ.jpg)  
 A video on how everything is soldered may come soon.
+
+Meanwhile you can enable subtitles in English in this YouTube video produced in Spanish languaje
+https://www.youtube.com/watch?v=JQUNXCyj2Fs
+
 # UI
 UI pictures from version 0.2  
 ![alt text](https://i.imgur.com/8ekMdIo.jpg)  
