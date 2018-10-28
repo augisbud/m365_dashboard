@@ -226,15 +226,14 @@ void displayFSM() {
   int tmp_0, tmp_1;
   
   //Custom Wheel size.
-  float _speed;
-  _speed = abs(S23CB0.speed);
-  
-  if (WheelSize) {
+  //float _speed;
+  //_speed = abs(S23CB0.speed); 
+  if (WheelSize) {	  
     _speed = _speed * 10 / 8.5; // 10" Whell
   }; 
-  
-  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
-  m365_info.spl = (unsigned int) _speed % 1000 / 100;
+  //wheel size not working right now, stick to other versions ;)
+  //m365_info.sph = (unsigned int) _speed / 1000;                  // speed
+  //m365_info.spl = (unsigned int) _speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
@@ -761,9 +760,9 @@ void displayFSM() {
         display.setCursor(0, 0);
 
         if (m365_info.sph < 10) display.print(' ');
-        display.print(m365_info.sph);
-        display.print('.');
-        display.print(m365_info.spl);
+        display.print(abs((float)S23CB0.speed / 1000.0f);
+        //display.print('.');
+        //display.print(m365_info.spl);
         display.setFont(defaultFont);
         display.print((const __FlashStringHelper *) l_kmh);
         display.setFont(stdNumb);
