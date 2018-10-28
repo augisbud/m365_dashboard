@@ -228,9 +228,9 @@ void displayFSM() {
   //Custom Wheel size.
   //float _speed;
   //_speed = abs(S23CB0.speed); 
-  if (WheelSize) {	  
-    _speed = _speed * 10 / 8.5; // 10" Whell
-  }; 
+  //if (WheelSize) {	  
+  //  _speed = _speed * 10 / 8.5; // 10" Whell
+  //}; 
   //wheel size not working right now, stick to other versions ;)
   //m365_info.sph = (unsigned int) _speed / 1000;                  // speed
   //m365_info.spl = (unsigned int) _speed % 1000 / 100;
