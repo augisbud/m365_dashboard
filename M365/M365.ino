@@ -225,15 +225,24 @@ void displayFSM() {
 
   int tmp_0, tmp_1;
   
-  //Custom Wheel size.
-  //float _speed;
-  //_speed = abs(S23CB0.speed); 
-  //if (WheelSize) {	  
-  //  _speed = _speed * 10 / 8.5; // 10" Whell
-  //}; 
-  //wheel size not working right now, stick to other versions ;)
-  //m365_info.sph = (unsigned int) _speed / 1000;                  // speed
-  //m365_info.spl = (unsigned int) _speed % 1000 / 100;
+  float _speed;
+  unsigned int c_speed; //current speed
+
+  // CURRENT SPEED CALCULATE ALGORYTHM
+  if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
+    c_speed = S23CB0.speed + 32768 + 32767; // calculate speed over 32.767 (hex 0x8000 and above) add 32768 and 32767 to conver to unsigned int
+  } else {
+    c_speed = abs(S23CB0.speed); }; //always + speed, even drive backwards ;)
+
+  // 10 INCH WHEEL SIZE CALCULATE
+  if (WheelSize) {
+    _speed = c_speed * 10 / 8.5; // 10" Whell
+  } else {
+    _speed = c_speed; //8,5" Whell
+  };
+ 
+  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
+  m365_info.spl = (unsigned int) _speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
@@ -246,7 +255,7 @@ void displayFSM() {
     Settings = false;
   }
 
-  if ((S23CB0.speed <= 200) || Settings) {
+  if ((c_speed <= 200) || Settings) {
     if (S20C00HZ65.brake > 130)
     brakeVal = 1;
       else
@@ -744,7 +753,7 @@ void displayFSM() {
       }
       showBatt(S25C31.remainPercent, S25C31.current < 0);
     } else {
-      if ((S25C31.current < -100) && (S23CB0.speed <= 200)) {
+      if ((S25C31.current < -100) && (c_speed <= 200)) {
         fsBattInfo();
       } else {
         displayClear(0);
@@ -760,9 +769,9 @@ void displayFSM() {
         display.setCursor(0, 0);
 
         if (m365_info.sph < 10) display.print(' ');
-        display.print(abs((long)S23CB0.speed / 1000L));
-        //display.print('.');
-        //display.print(m365_info.spl);
+        display.print(m365_info.sph);
+        display.print('.');
+        display.print(m365_info.spl);
         display.setFont(defaultFont);
         display.print((const __FlashStringHelper *) l_kmh);
         display.setFont(stdNumb);
