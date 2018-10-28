@@ -760,7 +760,7 @@ void displayFSM() {
         display.setCursor(0, 0);
 
         if (m365_info.sph < 10) display.print(' ');
-        display.print(abs((float)S23CB0.speed / 1000.0f);
+        display.print(abs((long)S23CB0.speed / 1000L));
         //display.print('.');
         //display.print(m365_info.spl);
         display.setFont(defaultFont);
