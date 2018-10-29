@@ -168,7 +168,7 @@ struct __attribute__((packed))A23C3E {
 struct __attribute__((packed))A23CB0 {
   //32 bytes;
   unsigned char u1[10];
-  int16_t       speed;              // /1000
+  int           speed;              // /1000
   unsigned int  averageSpeed;       // /1000
   unsigned long mileageTotal;       // /1000
   unsigned int  mileageCurrent;     // /100
