@@ -255,7 +255,7 @@ void displayFSM() {
     Settings = false;
   }
 
-  if ((S23CB0.speed <= 200) || Settings) {
+  if ((c_speed <= 200) || Settings) {
     if (S20C00HZ65.brake > 130)
     brakeVal = 1;
       else
@@ -753,7 +753,7 @@ void displayFSM() {
       }
       showBatt(S25C31.remainPercent, S25C31.current < 0);
     } else {
-      if ((S25C31.current < -100) && (S23CB0.speed <= 200)) {
+      if ((S25C31.current < -100) && (c_speed <= 200)) {
         fsBattInfo();
       } else {
         displayClear(0);
