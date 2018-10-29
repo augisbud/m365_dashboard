@@ -211,7 +211,7 @@ void displayFSM() {
     unsigned int curl;
     unsigned int vh;
     unsigned int vl;
-    unsigned int sph;
+    unsigned long sph;
     unsigned int spl;
     unsigned int milh;
     unsigned int mill;
@@ -240,8 +240,8 @@ void displayFSM() {
   } else {
     _speed = c_speed; //8,5" Whell
   };
- 
-  m365_info.sph = (double)((double)S23CB0.speed / 1000.0);                 // speed
+	
+  m365_info.sph = abs(S23CB0.speed) / 1000L); // speed
   m365_info.spl = 0; // will be patched later
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
