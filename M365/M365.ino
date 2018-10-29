@@ -226,7 +226,7 @@ void displayFSM() {
   int tmp_0, tmp_1;
   
   float _speed;
-  unsigned long c_speed; //current speed
+  unsigned int c_speed; //current speed
 
   // CURRENT SPEED CALCULATE ALGORYTHM
   if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
@@ -240,9 +240,9 @@ void displayFSM() {
   } else {
     _speed = c_speed; //8,5" Whell
   };
-	
-  m365_info.sph = abs(S23CB0.speed) / 1000L); // speed
-  m365_info.spl = 0; // will be patched later
+ 
+  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
+  m365_info.spl = (unsigned int) _speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
