@@ -241,8 +241,8 @@ void displayFSM() {
     _speed = c_speed; //8,5" Whell
   };
  
-  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
-  m365_info.spl = (unsigned int) _speed % 1000 / 100;
+  m365_info.sph = (double)((double)S23CB0.speed / 1000.0);                 // speed
+  m365_info.spl = (double)((double)S23CB0.speed % 1000 / 100);
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
