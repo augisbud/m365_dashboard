@@ -225,8 +225,8 @@ void displayFSM() {
 
   int tmp_0, tmp_1;
   
-  float _speed;
-  unsigned int c_speed; //current speed
+  long _speed;
+  long c_speed; //current speed
 
   // CURRENT SPEED CALCULATE ALGORYTHM
   if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
@@ -236,12 +236,12 @@ void displayFSM() {
 
   // 10 INCH WHEEL SIZE CALCULATE
   if (WheelSize) {
-    _speed = c_speed * 10 / 8.5; // 10" Whell
+    _speed = (long) c_speed * 10 / 8.5; // 10" Whell
   } else {
     _speed = c_speed; //8,5" Whell
   };
  
-  m365_info.sph = abs(_speed) / 1000L; // speed (GOOD)
+  m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
   m365_info.spl = (unsigned int) _speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
