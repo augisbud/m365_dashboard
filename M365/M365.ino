@@ -225,7 +225,6 @@ void displayFSM() {
 
   int tmp_0, tmp_1;
   
-  long _speed;
   long c_speed; //current speed
 
   // CURRENT SPEED CALCULATE ALGORYTHM
@@ -236,13 +235,11 @@ void displayFSM() {
 
   // 10 INCH WHEEL SIZE CALCULATE
   if (WheelSize) {
-    _speed = (long) c_speed * 10 / 8.5; // 10" Whell
-  } else {
-    _speed = c_speed; //8,5" Whell
-  };
+    c_speed = (long) c_speed * 10 / 8.5; // 10" Whell
+   };
  
-  m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
-  m365_info.spl = (unsigned int) _speed % 1000 / 100;
+  m365_info.sph = (unsigned long) abs(c_speed) / 1000L; // speed (GOOD)
+  m365_info.spl = (unsigned int) c_speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
