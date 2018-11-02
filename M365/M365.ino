@@ -26,14 +26,14 @@ void setup() {
     warnBatteryPercent = EEPROM.read(2);
     bigMode = EEPROM.read(3);
     bigWarn = EEPROM.read(4);
-	  WhellSize = EEPROM.read(5);
+    WheelSize = EEPROM.read(5);
   } else {
     EEPROM.put(0, 128);
     EEPROM.put(1, autoBig);
     EEPROM.put(2, warnBatteryPercent);
     EEPROM.put(3, bigMode);
     EEPROM.put(4, bigWarn);
-	  EEPROM.put(5, WhellSize);
+    EEPROM.put(5, WheelSize);
   }
 
 #ifdef DISPLAY_I2C
@@ -211,7 +211,7 @@ void displayFSM() {
     unsigned int curl;
     unsigned int vh;
     unsigned int vl;
-    unsigned int sph;
+    unsigned long sph;
     unsigned int spl;
     unsigned int milh;
     unsigned int mill;
@@ -225,16 +225,21 @@ void displayFSM() {
 
   int tmp_0, tmp_1;
   
-  //Custom Wheel size.
-  float _speed;
-  _speed = abs(S23CB0.speed);
-  
-  if (WhellSize) {
-    _speed = round(_speed * 10 / 8.5); // 10" Whell
-  }; 
-  
-  m365_info.sph = (unsigned int) _speed / 1000;                  // speed
-  m365_info.spl = (unsigned int) _speed % 1000 / 100;
+  long c_speed; //current speed
+
+  // CURRENT SPEED CALCULATE ALGORYTHM
+  if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
+    c_speed = S23CB0.speed + 32768 + 32767; // calculate speed over 32.767 (hex 0x8000 and above) add 32768 and 32767 to conver to unsigned int
+  } else {
+    c_speed = abs(S23CB0.speed); }; //always + speed, even drive backwards ;)
+
+  // 10 INCH WHEEL SIZE CALCULATE
+  if (WheelSize) {
+    c_speed = (long) c_speed * 10 / 8.5; // 10" Whell
+   };
+ 
+  m365_info.sph = (unsigned long) abs(c_speed) / 1000L; // speed (GOOD)
+  m365_info.spl = (unsigned int) c_speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
   m365_info.curl = abs(S25C31.current) % 100;
@@ -247,7 +252,7 @@ void displayFSM() {
     Settings = false;
   }
 
-  if ((S23CB0.speed <= 200) || Settings) {
+  if ((c_speed <= 200) || Settings) {
     if (S20C00HZ65.brake > 130)
     brakeVal = 1;
       else
@@ -315,13 +320,9 @@ void displayFSM() {
           }
           break;
         case 6:
-		      cfgWhellSize = !cfgWhellSize;
-          if (cfgWhellSize)
-			      WhellSize = true; //10"
-          else
-			      WhellSize = false; //8,5"
-          EEPROM.put(5, WhellSize);
-		  break;
+          WheelSize = !WheelSize;
+          EEPROM.put(5, WheelSize);
+	  break;
         case 7:
           oldBrakeVal = brakeVal;
           oldThrottleVal = throttleVal;
@@ -420,7 +421,7 @@ void displayFSM() {
         display.print(" ");
   
       display.print((const __FlashStringHelper *) M365CfgScr7);
-      switch (cfgWhellSize) {
+      switch (WheelSize) {
         case 1:
           display.print((const __FlashStringHelper *) l_10inch);
           break;
@@ -749,7 +750,7 @@ void displayFSM() {
       }
       showBatt(S25C31.remainPercent, S25C31.current < 0);
     } else {
-      if ((S25C31.current < -100) && (S23CB0.speed <= 200)) {
+      if ((S25C31.current < -100) && (c_speed <= 200)) {
         fsBattInfo();
       } else {
         displayClear(0);

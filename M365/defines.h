@@ -44,7 +44,6 @@ byte sMenuPos = 0;
 bool cfgCruise = false;
 bool cfgTailight = false;
 byte cfgKERS = 0;
-bool cfgWhellSize = false;
 
 volatile int oldBrakeVal = -1;
 volatile int oldThrottleVal = -1;
@@ -58,7 +57,7 @@ SSD1306AsciiSpi display;
 SSD1306AsciiWire display;
 #endif
 
-bool WhellSize = false; //whell 8,5"
+bool WheelSize = false; //whell 8,5"
 
 byte WDTcounts = 0;
 void(* resetFunc) (void) = 0;
