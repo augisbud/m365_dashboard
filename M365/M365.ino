@@ -421,14 +421,11 @@ void displayFSM() {
         display.print(" ");
   
       display.print((const __FlashStringHelper *) M365CfgScr7);
-      switch (WheelSize) {
-        case 1:
+       if(WheelSize) {
           display.print((const __FlashStringHelper *) l_10inch);
-          break;
-        default:
+     }else{
           display.print((const __FlashStringHelper *) l_85inch);
-          break;
-      }
+      }  
       //display.setCursor(0, 7);
 
       /*for (int i = 0; i < 25; i++) {
