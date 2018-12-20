@@ -156,38 +156,37 @@
   const char l_a[] PROGMEM = {"F"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"N"};
-
-  #elif Language == ES
+#elif Language == ES
   #define defaultFont System5x7mod
 
-    const char noBUS1[] PROGMEM = {"BUS no"};
-  const char noBUS2[] PROGMEM = {"¡conectado!"};
-  const char noBUS3[] PROGMEM = {"No datos a"};
-  const char noBUS4[] PROGMEM = {"¡pantalla!"};
+  const char noBUS1[] PROGMEM = {"BUS no"};
+  const char noBUS2[] PROGMEM = {"conectado"};
+  const char noBUS3[] PROGMEM = {"pantalla"};
+  const char noBUS4[] PROGMEM = {"sin datos"};
 
-  const char confScr1[] PROGMEM = {"Gran velocímetro: "};
-  const char confScr2[] PROGMEM = {"Big speedo.: "};
-  const char confScr2a[] PROGMEM = {"VELOCIDAD"};
-  const char confScr2b[] PROGMEM = {"ACTUAL"};
-  const char confScr3[] PROGMEM = {"Alarma batería : "};
+  const char confScr1[] PROGMEM = {"Gran velocimet.: "};
+  const char confScr2[] PROGMEM = {"Gran veloc.: "};
+  const char confScr2a[] PROGMEM = {"    KMH"};
+  const char confScr2b[] PROGMEM = {"ENERGIA"};
+  const char confScr3[] PROGMEM = {"Alarma bateria : "};
   const char confScr4[] PROGMEM = {"Gran alar. bat.: "};
-  const char confScr5[] PROGMEM = {"Información "};
+  const char confScr5[] PROGMEM = {"Informacion "};
   const char confScr6[] PROGMEM = {"Configurar M365"};
   const char confScr7[] PROGMEM = {"Grabar y salir"};
 
   const char infoScr1[] PROGMEM = {"Distancia total"};
-  const char infoScr2[] PROGMEM = {"Tiempo de encendido"};
+  const char infoScr2[] PROGMEM = {"Tiempo encendido"};
 
   const char battScr[] PROGMEM = {">>> Freno para salir <<<"};
 
-  const char M365CfgScr1[] PROGMEM = {"Control de crucero: "};
+  const char M365CfgScr1[] PROGMEM = {"Control crucero: "};
   const char M365CfgScr2[] PROGMEM = {"Actualizar cruzero"};
-  const char M365CfgScr3[] PROGMEM = {"Luz trasera SI: "};
+  const char M365CfgScr3[] PROGMEM = {"Luz trasera:    "};
   const char M365CfgScr4[] PROGMEM = {"Actual. luz tras."};
   const char M365CfgScr5[] PROGMEM = {"KERS:        "};
   const char M365CfgScr6[] PROGMEM = {"Actualizar KERS"};
   const char M365CfgScr8[] PROGMEM = {"Salir"};
-  const char M365CfgScr7[] PROGMEM = {"Tamaño Rueda:   "};
+  const char M365CfgScr7[] PROGMEM = {"Tipo de Rueda:  "};
 
   const char l_85inch[] PROGMEM = {" 8,5\""};
   const char l_10inch[] PROGMEM = {"  10\""};
