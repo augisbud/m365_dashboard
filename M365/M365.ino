@@ -224,21 +224,22 @@ void displayFSM() {
   int throttleVal = -1;
 
   int tmp_0, tmp_1;
-  
+  long _speed;
   long c_speed; //current speed
-
+  unsigned int c_speed; //current speed
   // CURRENT SPEED CALCULATE ALGORYTHM
   if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
     c_speed = S23CB0.speed + 32768 + 32767; // calculate speed over 32.767 (hex 0x8000 and above) add 32768 and 32767 to conver to unsigned int
   } else {
     c_speed = abs(S23CB0.speed); }; //always + speed, even drive backwards ;)
-
   // 10 INCH WHEEL SIZE CALCULATE
   if (WheelSize) {
-    c_speed = (long) c_speed * 10 / 8.5; // 10" Whell
-   };
+    _speed = (long) c_speed * 10 / 8.5; // 10" Whell
+  } else {
+    _speed = c_speed; //8,5" Whell
+  };
  
-  m365_info.sph = (unsigned long) abs(c_speed) / 1000L; // speed (GOOD)
+  m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
   m365_info.spl = (unsigned int) c_speed % 1000 / 100;
   m365_info.curh = abs(S25C31.current) / 100;       //current 
   //m365_info.curh = S25C31.current / 100;       //current //testing only
