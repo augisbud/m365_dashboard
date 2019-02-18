@@ -30,7 +30,7 @@ BUS To Yellow
 ![alt text](https://i.imgur.com/3ZwcrIJ.jpg)  
 A video on how everything is soldered may come soon.
 
-Meanwhile you can enable subtitles in English in this YouTube video produced in Spanish languaje
+Meanwhile you can enable subtitles in English in this YouTube video produced in Spanish language
 https://www.youtube.com/watch?v=JQUNXCyj2Fs
 
 # UI
