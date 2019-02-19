@@ -27,6 +27,9 @@ void setup() {
     bigMode = EEPROM.read(3);
     bigWarn = EEPROM.read(4);
     WheelSize = EEPROM.read(5);
+    cfgCruise = EEPROM.read(6);
+    cfgTailight = EEPROM.read(7);
+    cfgKERS = EEPROM.read(8);
   } else {
     EEPROM.put(0, 128);
     EEPROM.put(1, autoBig);
@@ -34,6 +37,9 @@ void setup() {
     EEPROM.put(3, bigMode);
     EEPROM.put(4, bigWarn);
     EEPROM.put(5, WheelSize);
+    EEPROM.put(6, cfgCruise);
+    EEPROM.put(7, cfgTailight);
+    EEPROM.put(8, cfgKERS);
   }
 
 #ifdef DISPLAY_I2C
@@ -280,6 +286,7 @@ void displayFSM() {
       switch (sMenuPos) {
         case 0:
           cfgCruise = !cfgCruise;
+	  EEPROM.put(6, cfgCruise);
           break;
         case 1:
           if (cfgCruise)
@@ -289,6 +296,7 @@ void displayFSM() {
           break;
         case 2:
           cfgTailight = !cfgTailight;
+	  EEPROM.put(7, cfgTailight);
           break;
         case 3:
           if (cfgTailight)
@@ -300,12 +308,15 @@ void displayFSM() {
           switch (cfgKERS) {
             case 1:
               cfgKERS = 2;
+	      EEPROM.put(8, cfgKERS);
               break;
             case 2:
               cfgKERS = 0;
+	      EEPROM.put(8, cfgKERS);
               break;
             default: 
               cfgKERS = 1;
+	      EEPROM.put(8, cfgKERS);
           }
           break;
         case 5:
