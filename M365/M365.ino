@@ -246,8 +246,7 @@ void displayFSM() {
  
   m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
   m365_info.spl = (unsigned int) c_speed % 1000 / 100;
-  m365_info.curh = abs(S25C31.current) / 100;       //current 
-  //m365_info.curh = S25C31.current / 100;       //current //testing only
+  m365_info.curh = abs(S25C31.current) / 100;       //current
   m365_info.curl = abs(S25C31.current) % 100;
   m365_info.vh = abs(S25C31.voltage) / 100;         //voltage
   m365_info.vl = abs(S25C31.voltage) % 100;
