@@ -232,7 +232,6 @@ void displayFSM() {
   int tmp_0, tmp_1;
   long _speed;
   long c_speed; //current speed
-  unsigned int c_speed; //current speed
   // CURRENT SPEED CALCULATE ALGORYTHM
   if (S23CB0.speed < -10000) {// If speed if more than 32.767 km/h (32767)
     c_speed = S23CB0.speed + 32768 + 32767; // calculate speed over 32.767 (hex 0x8000 and above) add 32768 and 32767 to conver to unsigned int
