@@ -246,6 +246,10 @@ void displayFSM() {
  
   m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
   m365_info.spl = (unsigned int) c_speed % 1000 / 100;
+  #ifdef US_Version
+     m365_info.sph = m365_info.sph/1.609;
+     m365_info.spl = m365_info.spl/1.609;
+  #endif
   m365_info.curh = abs(S25C31.current) / 100;       //current
   m365_info.curl = abs(S25C31.current) % 100;
   m365_info.vh = abs(S25C31.voltage) / 100;         //voltage
@@ -767,7 +771,11 @@ void displayFSM() {
         m365_info.Min = S23C3A.ridingTime / 60;         //riding time
         m365_info.Sec = S23C3A.ridingTime % 60;
         m365_info.temp = S23CB0.mainframeTemp / 10;     //temperature
-
+	#ifdef US_Version
+          m365_info.milh = m365_info.milh/1.609;
+          m365_info.mill = m365_info.mill/1.609;
+          m365_info.temp = m365_info.temp*9/5+32;
+        #endif
         display.set1X();
         display.setFont(stdNumb);
         display.setCursor(0, 0);
