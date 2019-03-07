@@ -4,6 +4,8 @@
 //#define DISPLAY_SPI
 #define DISPLAY_I2C
 
+#define US_Version
+
 #include "SSD1306Ascii.h"
 #ifdef DISPLAY_SPI
   #include <SPI.h>
