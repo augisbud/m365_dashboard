@@ -180,7 +180,7 @@
   const char battScr[] PROGMEM = {">>> Freno para salir <<<"};
 
   const char M365CfgScr1[] PROGMEM = {"Control crucero: "};
-  const char M365CfgScr2[] PROGMEM = {"Actualizar cruzero"};
+  const char M365CfgScr2[] PROGMEM = {"Actualizar crucero"};
   const char M365CfgScr3[] PROGMEM = {"Luz trasera:    "};
   const char M365CfgScr4[] PROGMEM = {"Actual. luz tras."};
   const char M365CfgScr5[] PROGMEM = {"KERS:        "};
