@@ -23,6 +23,8 @@
 #include "fonts/System5x7mod.h"
 #include "fonts/stdNumb.h"
 #include "fonts/bigNumb.h"
+#define PIN_BTN 2
+#define PIN_LED A0
 
 #include <EEPROM.h>
 
@@ -51,6 +53,8 @@ byte cfgKERS = 0;
 
 volatile int oldBrakeVal = -1;
 volatile int oldThrottleVal = -1;
+volatile bool btnPressed = false;
+bool bAlarm = false;
 
 unsigned long timer = 0; 
 

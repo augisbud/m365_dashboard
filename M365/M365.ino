@@ -19,6 +19,7 @@ void WDTint_() {
 
 void setup() {
   XIAOMI_PORT.begin(115200);
+  pinMode(PIN_LED, OUTPUT);
 
   byte cfgID = EEPROM.read(0);
   if (cfgID == 128) {
@@ -225,7 +226,7 @@ void displayFSM() {
     unsigned int Min;
     unsigned int Sec;
     unsigned int temp;
-  }m365_info;
+  } m365_info;
 
   int brakeVal = -1;
   int throttleVal = -1;
@@ -776,7 +777,7 @@ void displayFSM() {
           m365_info.milh = m365_info.milh/1.609;
           m365_info.mill = m365_info.mill/1.609;
           m365_info.temp = m365_info.temp*9/5+32;
-        #endif
+  #endif
         display.set1X();
         display.setFont(stdNumb);
         display.setCursor(0, 0);
@@ -840,6 +841,16 @@ void dataFSM() {
   static unsigned char   Buf[RECV_BUFLEN];
   static unsigned char * _bufPtr;
   _bufPtr = (unsigned char*)&Buf;
+
+  bool btnNow = digitalRead(PIN_BTN);
+  if (btnNow) {
+    if (!btnPressed) {
+      btnPressed = true;
+      bAlarm = !bAlarm;
+    }
+  } else btnPressed = false;
+
+  digitalWrite(PIN_LED, bAlarm);
 
   switch (step) {
     case 0:                                                             //search header sequence
