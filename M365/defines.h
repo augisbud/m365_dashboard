@@ -1,8 +1,8 @@
 #include "WatchDog.h"
 
 // Select either SPI or I2C(Wire) Display Mode
-//#define DISPLAY_SPI
-#define DISPLAY_I2C
+#define DISPLAY_SPI
+//#define DISPLAY_I2C
 
 //#define US_Version
 
@@ -10,9 +10,11 @@
 #ifdef DISPLAY_SPI
   #include <SPI.h>
   #include "SSD1306AsciiSpi.h"
-  #define PIN_CS  4
-  #define PIN_RST 3
-  #define PIN_DC  5
+  #define PIN_CS  10
+  #define PIN_RST 9
+  #define PIN_DC  8
+  #define PIN_D0 13
+  #define PIN_D1 11
 #endif
 #ifdef DISPLAY_I2C
   #include "SSD1306AsciiWire.h"
@@ -59,7 +61,7 @@ SSD1306AsciiSpi display;
 SSD1306AsciiWire display;
 #endif
 
-bool WheelSize = false; //whell 8,5"
+bool WheelSize = true; //whell 8,5"
 
 byte WDTcounts = 0;
 void(* resetFunc) (void) = 0;
