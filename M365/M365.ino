@@ -19,7 +19,6 @@ void WDTint_() {
 
 void setup() {
   XIAOMI_PORT.begin(115200);
-  pinMode(PIN_LED, OUTPUT);
 
   uint8_t cfgID = EEPROM.read(0);
   if (cfgID == 128) {
@@ -842,17 +841,6 @@ void dataFSM() {
   static uint8_t* _bufPtr;
   _bufPtr = (uint8_t*)&Buf; // char
 
-  bool btnNow = digitalRead(PIN_BTN);
-  if (btnNow) {
-    if (!btnPressed) {
-      btnPressed = true;
-      bAlarm = !bAlarm;
-    }
-  } else btnPressed = false;
-
-  digitalWrite(PIN_LED, bAlarm);
-  if (bAlarm) return;
-
   switch (step) {
     case 0:                                                             //search header sequence
       while (XIAOMI_PORT.available() >= 2)
@@ -1071,7 +1059,7 @@ void prepareNextQuery() {
   if (index >= _Query._dynSize) index = 0;
 }
 
-uint8_t preloadQueryFromTable(uint8_t index) {
+uint8_t preloadQueryFromTable(unsigned char index) {
   uint8_t* ptrBuf;
   uint8_t* pp; //pointer preamble
   uint8_t* ph; //pointer header
@@ -1129,7 +1117,7 @@ uint8_t preloadQueryFromTable(uint8_t index) {
     ptrBuf+= hLen;
   }
 
-  // unsigned char 
+  //unsigned char 
   _Query.DataLen = ptrBuf - (uint8_t*)&_Query.buf[2]; //calculate length of data in buf, w\o preamble and cs
   _Query.cs = calcCs((uint8_t*)&_Query.buf[2], _Query.DataLen);    //calculate cs of buffer
 

@@ -27,8 +27,6 @@
 #endif
 #include "fonts/stdNumb.h"
 #include "fonts/bigNumb.h"
-#define PIN_BTN 2
-#define PIN_LED A0
 
 #include <EEPROM.h>
 
