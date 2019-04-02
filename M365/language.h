@@ -1,6 +1,6 @@
-#define Language ENG //English
+//#define Language ENG //English
 //#define Language FRA //French
-//#define Language RU //Russian, use together with the russian font in libraries folder
+#define Language RU //Russian, use together with the russian font in libraries folder
 //#define Language ES //Spanish
 
 #if Language == ENG

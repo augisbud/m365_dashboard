@@ -20,7 +20,11 @@
   #include "SSD1306AsciiWire.h"
 #endif
 #include "fonts/m365.h"
-#include "fonts/System5x7mod.h"
+#if Language == RU
+  #include "fonts/System5x7ru.h"
+#else
+  #include "fonts/System5x7mod.h"
+#endif
 #include "fonts/stdNumb.h"
 #include "fonts/bigNumb.h"
 #define PIN_BTN 2
@@ -190,7 +194,7 @@ struct __attribute__((packed))A23C23 { //skip
   uint8_t u2;
   uint8_t u3; //0x30
   uint8_t u4; //0x09
-  unsigned int  remainMileage;  // /100 
+  uint16_t  remainMileage;  // /100 
 } S23C23;
 
 struct __attribute__((packed))A23C3A {

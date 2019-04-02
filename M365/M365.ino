@@ -1070,7 +1070,7 @@ void prepareNextQuery() {
   if (index >= _Query._dynSize) index = 0;
 }
 
-uint8_t preloadQueryFromTable(unsigned char index) {
+uint8_t preloadQueryFromTable(uint8_t index) {
   uint8_t* ptrBuf;
   uint8_t* pp; //pointer preamble
   uint8_t* ph; //pointer header
@@ -1128,7 +1128,7 @@ uint8_t preloadQueryFromTable(unsigned char index) {
     ptrBuf+= hLen;
   }
 
-  //unsigned char 
+  // unsigned char 
   _Query.DataLen = ptrBuf - (uint8_t*)&_Query.buf[2]; //calculate length of data in buf, w\o preamble and cs
   _Query.cs = calcCs((uint8_t*)&_Query.buf[2], _Query.DataLen);    //calculate cs of buffer
 
