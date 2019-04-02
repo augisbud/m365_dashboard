@@ -1,7 +1,7 @@
 #include "defines.h"
 
 bool displayClear(byte ID = 1, bool force = false) {
-  volatile static byte oldID = 0;
+  volatile static uint8_t oldID = 0;
 
   if ((oldID != ID) || force) {
     display.clear();
@@ -21,7 +21,7 @@ void setup() {
   XIAOMI_PORT.begin(115200);
   pinMode(PIN_LED, OUTPUT);
 
-  byte cfgID = EEPROM.read(0);
+  uint8_t cfgID = EEPROM.read(0);
   if (cfgID == 128) {
     autoBig = EEPROM.read(1);
     warnBatteryPercent = EEPROM.read(2);
@@ -59,7 +59,7 @@ void setup() {
   display.print((char)0x20);
   display.setFont(defaultFont);
 
-  unsigned long wait = millis() + 2000;
+  uint32_t wait = millis() + 2000;
   while ((wait > millis()) || ((wait - 1000 > millis()) && (S25C31.current != 0) && (S25C31.voltage != 0) && (S25C31.remainPercent != 0))) {
     dataFSM();
     if (_Query.prepared == 0) prepareNextQuery();
@@ -129,7 +129,7 @@ void showBatt(int percent, bool blinkIt) {
 void fsBattInfo() {
   displayClear(6);
 
-  int tmp_0, tmp_1;
+  int16_t tmp_0, tmp_1;
 
   display.setCursor(0, 0);
   display.set1X();
@@ -178,12 +178,12 @@ void fsBattInfo() {
   display.print((char)0x80);
   display.print("C");
 
-  int v;
-  int * ptr;
+  int16_t v;
+  int16_t * ptr;
   int * ptr2;
-  ptr = (int*)&S25C40;
+  ptr = (int16_t*)&S25C40;
   ptr2 = ptr + 5;
-  for (int i = 0; i < 5; i++) {
+  for (uint8_t i = 0; i < 5; i++) {
     display.setCursor(5, 2 + i);
     display.print(i);
     display.print(": ");
@@ -215,17 +215,17 @@ void fsBattInfo() {
 
 void displayFSM() {
   struct {
-    unsigned int curh;
-    unsigned int curl;
-    unsigned int vh;
-    unsigned int vl;
-    unsigned long sph;
-    unsigned int spl;
-    unsigned int milh;
-    unsigned int mill;
-    unsigned int Min;
-    unsigned int Sec;
-    unsigned int temp;
+    uint16_t curh;
+    uint16_t curl;
+    uint16_t vh;
+    uint16_t vl;
+    uint32_t sph;
+    uint16_t spl;
+    uint16_t milh;
+    uint16_t mill;
+    uint16_t Min;
+    uint16_t Sec;
+    uint16_t temp;
   } m365_info;
 
   int brakeVal = -1;
@@ -246,8 +246,8 @@ void displayFSM() {
     _speed = c_speed; //8,5" Whell
   };
  
-  m365_info.sph = (unsigned long) abs(_speed) / 1000L; // speed (GOOD)
-  m365_info.spl = (unsigned int) c_speed % 1000 / 100;
+  m365_info.sph = (uint32_t) abs(_speed) / 1000L; // speed (GOOD)
+  m365_info.spl = (uint16_t) c_speed % 1000 / 100;
   #ifdef US_Version
      m365_info.sph = m365_info.sph/1.609;
      m365_info.spl = m365_info.spl/1.609;
@@ -631,7 +631,7 @@ void displayFSM() {
 
       display.setCursor(0, 6);
 
-      for (int i = 0; i < 25; i++) {
+      for (uint8_t i = 0; i < 25; i++) {
         display.setCursor(i * 5, 6);
         display.print('-');
       }
@@ -836,11 +836,11 @@ void displayFSM() {
 // -----------------------------------------------------------------------------------------------------------
 
 void dataFSM() {
-  static unsigned char   step = 0, _step = 0, entry = 1;
-  static unsigned long   beginMillis;
-  static unsigned char   Buf[RECV_BUFLEN];
-  static unsigned char * _bufPtr;
-  _bufPtr = (unsigned char*)&Buf;
+  static uint8_t   step = 0, _step = 0, entry = 1;
+  static uint32_t   beginMillis;
+  static uint8_t   Buf[RECV_BUFLEN]; // char
+  static uint8_t* _bufPtr;
+  _bufPtr = (uint8_t*)&Buf; // char
 
   bool btnNow = digitalRead(PIN_BTN);
   if (btnNow) {
@@ -862,17 +862,17 @@ void dataFSM() {
         }
       break;
     case 1: //preamble complete, receive body
-      static unsigned char   readCounter;
-      static unsigned int    _cs;
-      static unsigned char * bufPtr;
-      static unsigned char * asPtr; //
-      unsigned char bt;
-      if (entry) {      //init variables
+      static uint8_t   readCounter;
+      static uint16_t    _cs;
+      static uint8_t* bufPtr;
+      static uint8_t* asPtr; //
+      uint8_t bt;
+      if (entry) {      // init variables
         memset((void*)&AnswerHeader, 0, sizeof(AnswerHeader));
         bufPtr = _bufPtr;
         readCounter = 0;
         beginMillis = millis();
-        asPtr = (unsigned char *)&AnswerHeader;   //pointer onto header structure
+        asPtr = (uint8_t*)&AnswerHeader;   //pointer onto header structure
         _cs = 0xFFFF;
       }
       if (readCounter >= RECV_BUFLEN) {               //overrun
@@ -899,9 +899,9 @@ void dataFSM() {
       }
 
       if (AnswerHeader.len == (readCounter - 4)) {    //if len in header == current received len
-        unsigned int   cs;
-        unsigned int * ipcs;
-        ipcs = (unsigned int*)(bufPtr-2);
+        uint16_t cs;
+        uint16_t* ipcs;
+        ipcs = (uint16_t*)(bufPtr-2);
         cs = *ipcs;
         if(cs != _cs) {   //check cs
           step = 2;
@@ -925,8 +925,8 @@ void dataFSM() {
   } else entry = 0;
 }
 
-void processPacket(unsigned char * data, unsigned char len) {
-  unsigned char RawDataLen;
+void processPacket(uint8_t* data, uint8_t len) {
+  uint8_t RawDataLen;
   RawDataLen = len - sizeof(AnswerHeader) - 2;//(crc)
 
   switch (AnswerHeader.addr) { //store data into each other structure
@@ -1047,7 +1047,7 @@ void processPacket(unsigned char * data, unsigned char len) {
         break;
   }
 
-  for (unsigned char i = 0; i < sizeof(_commandsWeWillSend); i++)
+  for (uint8_t i = 0; i < sizeof(_commandsWeWillSend); i++)
     if (AnswerHeader.cmd == _q[_commandsWeWillSend[i]]) {
       _NewDataFlag = 1;
       break;
@@ -1055,7 +1055,7 @@ void processPacket(unsigned char * data, unsigned char len) {
 }
 
 void prepareNextQuery() {
-  static unsigned char index = 0;
+  static uint8_t index = 0;
 
   _Query._dynQueries[0] = 1;
   _Query._dynQueries[1] = 8;
@@ -1070,15 +1070,15 @@ void prepareNextQuery() {
   if (index >= _Query._dynSize) index = 0;
 }
 
-unsigned char preloadQueryFromTable(unsigned char index) {
-  unsigned char * ptrBuf;
-  unsigned char * pp; //pointer preamble
-  unsigned char * ph; //pointer header
-  unsigned char * pe; //pointer end
+uint8_t preloadQueryFromTable(unsigned char index) {
+  uint8_t* ptrBuf;
+  uint8_t* pp; //pointer preamble
+  uint8_t* ph; //pointer header
+  uint8_t* pe; //pointer end
 
-  unsigned char cmdFormat;
-  unsigned char hLen; //header length
-  unsigned char eLen; //ender length
+  uint8_t cmdFormat;
+  uint8_t hLen; //header length
+  uint8_t eLen; //ender length
 
   if (index >= sizeof(_q)) return 1; //unknown index
 
@@ -1086,30 +1086,30 @@ unsigned char preloadQueryFromTable(unsigned char index) {
 
   cmdFormat = pgm_read_byte_near(_f + index);
 
-  pp = (unsigned char*)&_h0;
+  pp = (uint8_t*)&_h0;
   ph = NULL;
   pe = NULL;
 
   switch(cmdFormat) {
     case 1: //h1 only
-      ph = (unsigned char*)&_h1;
+      ph = (uint8_t*)&_h1;
       hLen = sizeof(_h1);
       pe = NULL;
       break;
     case 2: //h2 + end20
-      ph = (unsigned char*)&_h2;
+      ph = (uint8_t*)&_h2;
       hLen = sizeof(_h2);
 
       //copies last known throttle & brake values
       _end20t.hz = 0x02;
       _end20t.th = S20C00HZ65.throttle;
       _end20t.br = S20C00HZ65.brake;
-      pe = (unsigned char*)&_end20t;
+      pe = (uint8_t*)&_end20t;
       eLen = sizeof(_end20t);
       break;
   }
 
-  ptrBuf = (unsigned char*)&_Query.buf;
+  ptrBuf = (uint8_t*)&_Query.buf;
 
   memcpy_P((void*)ptrBuf, (void*)pp, sizeof(_h0));  //copy preamble
   ptrBuf += sizeof(_h0);
@@ -1129,14 +1129,14 @@ unsigned char preloadQueryFromTable(unsigned char index) {
   }
 
   //unsigned char 
-  _Query.DataLen = ptrBuf - (unsigned char*)&_Query.buf[2]; //calculate length of data in buf, w\o preamble and cs
-  _Query.cs = calcCs((unsigned char*)&_Query.buf[2], _Query.DataLen);    //calculate cs of buffer
+  _Query.DataLen = ptrBuf - (uint8_t*)&_Query.buf[2]; //calculate length of data in buf, w\o preamble and cs
+  _Query.cs = calcCs((uint8_t*)&_Query.buf[2], _Query.DataLen);    //calculate cs of buffer
 
   return 0;
 }
 
-void prepareCommand(unsigned char cmd) {
-  unsigned char * ptrBuf;
+void prepareCommand(uint8_t cmd) {
+  uint8_t* ptrBuf;
 
   _cmd.len  =    4;
   _cmd.addr = 0x20;
@@ -1175,7 +1175,7 @@ void prepareCommand(unsigned char cmd) {
       return; //undefined command - do nothing
       break;
   }
-  ptrBuf = (unsigned char*)&_Query.buf;
+  ptrBuf = (uint8_t*)&_Query.buf;
 
   memcpy_P((void*)ptrBuf, (void*)_h0, sizeof(_h0));  //copy preamble
   ptrBuf += sizeof(_h0);
@@ -1184,23 +1184,23 @@ void prepareCommand(unsigned char cmd) {
   ptrBuf += sizeof(_cmd);
 
   //unsigned char 
-  _Query.DataLen = ptrBuf - (unsigned char*)&_Query.buf[2];               //calculate length of data in buf, w\o preamble and cs
-  _Query.cs = calcCs((unsigned char*)&_Query.buf[2], _Query.DataLen);     //calculate cs of buffer
+  _Query.DataLen = ptrBuf - (uint8_t*)&_Query.buf[2];               //calculate length of data in buf, w\o preamble and cs
+  _Query.cs = calcCs((uint8_t*)&_Query.buf[2], _Query.DataLen);     //calculate cs of buffer
 
   _Query.prepared = 1;
 }
 
 void writeQuery() {
   RX_DISABLE;
-  XIAOMI_PORT.write((unsigned char*)&_Query.buf, _Query.DataLen + 2);     //DataLen + length of preamble
-  XIAOMI_PORT.write((unsigned char*)&_Query.cs, 2);
+  XIAOMI_PORT.write((uint8_t*)&_Query.buf, _Query.DataLen + 2);     //DataLen + length of preamble
+  XIAOMI_PORT.write((uint8_t*)&_Query.cs, 2);
   RX_ENABLE;
   _Query.prepared = 0;
 }
 
-unsigned int calcCs(unsigned char * data, unsigned char len) {
-  unsigned int cs = 0xFFFF;
-  for (int i = len; i > 0; i--) cs -= *data++;
+uint16_t calcCs(uint8_t* data, uint8_t len) {
+  uint16_t cs = 0xFFFF;
+  for (uint8_t i = len; i > 0; i--) cs -= *data++;
 
   return cs;
 }
