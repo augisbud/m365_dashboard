@@ -851,6 +851,7 @@ void dataFSM() {
   } else btnPressed = false;
 
   digitalWrite(PIN_LED, bAlarm);
+  if (bAlarm) return;
 
   switch (step) {
     case 0:                                                             //search header sequence
