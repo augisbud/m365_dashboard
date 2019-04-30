@@ -65,31 +65,26 @@ void setup() {
   }
 
   //Check for M365 DashBorad temporary deactivation request
-  if ((S20C00HZ65.brake > 130)&&(S20C00HZ65.throttle > 150))
+    if ((S20C00HZ65.brake > 130)&&(S20C00HZ65.throttle > 150))
   {
     XIAOMI_PORT.end();
     pinMode(0, INPUT);
     pinMode(1, INPUT); 
-    displayClear(1);
     display.set2X();
-
     displayClear(1);
     display.setCursor(0, 1);
     display.println(" DASHBOARD");
     while (true)
     {
-      //displayClear(1);
       display.setCursor(0, 4);
       display.println(" DISABLED ");
       wait = millis() + 500;
       while (wait>millis());
-      //displayClear(1);
       display.setCursor(0, 4);
       display.println("          ");
       wait = millis() + 200;
       while (wait>millis());
     }
-    
   }
   
   if ((S25C31.current == 0) && (S25C31.voltage == 0) && (S25C31.remainPercent == 0)) {
