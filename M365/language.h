@@ -1,9 +1,12 @@
-#define Language ENG //English
-//#define Language FRA //French
-//#define Language RU //Russian, use together with the russian font in libraries folder
-//#define Language ES //Spanish
+//***********************************
+//LANGUAGE SELECTION. Uncomment only one line
+//***********************************
+#define LANG_ENG //English
+//#define LANG_FRA //French
+//#define LANG_RU //Russian, use together with the russian font in libraries folder
+//#define LANG_ES //Spanish
 
-#if Language == ENG
+#ifdef LANG_ENG
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS not"};
@@ -54,7 +57,9 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#elif Language == FRA
+  #endif #else
+  
+  #ifdef LANG_FRA
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS non"};
@@ -105,7 +110,9 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#elif Language == RU
+  #endif #else
+  
+  #ifdef LANG_RU
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"Ytn"};
@@ -156,7 +163,9 @@
   const char l_a[] PROGMEM = {"F"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"N"};
-#elif Language == ES
+  #endif #else
+  
+  #ifdef LANG_ES
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS no"};
@@ -207,4 +216,5 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#endif
+
+  #endif

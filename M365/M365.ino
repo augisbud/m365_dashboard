@@ -1,3 +1,7 @@
+//*************************************************
+//NOTE: For selecting a different language than english check "language.h" file
+//*************************************************
+
 #include "defines.h"
 
 bool displayClear(byte ID = 1, bool force = false) {
