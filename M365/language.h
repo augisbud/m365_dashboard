@@ -57,7 +57,7 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-  #endif #else
+  #endif
   
   #ifdef LANG_FRA
   #define defaultFont System5x7mod
@@ -110,7 +110,7 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-  #endif #else
+  #endif
   
   #ifdef LANG_RU
   #define defaultFont System5x7mod
@@ -163,7 +163,7 @@
   const char l_a[] PROGMEM = {"F"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"N"};
-  #endif #else
+  #endif
   
   #ifdef LANG_ES
   #define defaultFont System5x7mod
