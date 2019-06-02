@@ -1,9 +1,13 @@
-//#define Language ENG //English
-//#define Language FRA //French
-#define Language RU //Russian, use together with the russian font in libraries folder
-//#define Language ES //Spanish
+//***********************************
+//LANGUAGE SELECTION. Uncomment only one line
+//***********************************
+#define LANG_ENG //English
+//#define LANG_FRA //French
+//#define LANG_RU //Russian, use together with the russian font in libraries folder
+//#define LANG_ES //Spanish
+//#define LANG_CZ //Czech
 
-#if Language == ENG
+#ifdef LANG_ENG
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS not"};
@@ -54,7 +58,9 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#elif Language == FRA
+  #endif
+  
+  #ifdef LANG_FRA
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS non"};
@@ -105,7 +111,9 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#elif Language == RU
+  #endif
+  
+  #ifdef LANG_RU
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"Ytn"};
@@ -156,7 +164,9 @@
   const char l_a[] PROGMEM = {"F"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"N"};
-#elif Language == ES
+  #endif
+  
+  #ifdef LANG_ES
   #define defaultFont System5x7mod
 
   const char noBUS1[] PROGMEM = {"BUS no"};
@@ -207,4 +217,58 @@
   const char l_a[] PROGMEM = {"A"};
   const char l_c[] PROGMEM = {"C"};
   const char l_t[] PROGMEM = {"T"};
-#endif
+  #endif
+
+  #ifdef LANG_CZ
+  #define defaultFont System5x7mod
+
+  const char noBUS1[] PROGMEM = {" Displej"};
+  const char noBUS2[] PROGMEM = {"   neni   "};
+  const char noBUS3[] PROGMEM = {"  spravne "};
+  const char noBUS4[] PROGMEM = {" zapojen !"};
+
+  const char confScr1[] PROGMEM = {"Velky rychlomer: "};
+  const char confScr2[] PROGMEM = {"Velky rych.:"};          //Velky rychlomer
+  const char confScr2a[] PROGMEM = {"RYCHLOST"};
+  const char confScr2b[] PROGMEM = {"   PROUD"};
+  const char confScr3[] PROGMEM = {"Varovani baterie:"};
+  const char confScr4[] PROGMEM = {"Velke varo. bat.:"};    //Velke varovani baterie
+  const char confScr5[] PROGMEM = {"Info o baterii >"};
+  const char confScr6[] PROGMEM = {"Nastaveni M365 >"};
+  const char confScr7[] PROGMEM = {"Ulozit a odejit"};
+
+  const char infoScr1[] PROGMEM = {"Celkova vzdalenost"};
+  const char infoScr2[] PROGMEM = {"Cas od zapnuti"};
+
+  const char battScr[] PROGMEM = {">>>  Brzdou zpet  <<<"};
+
+  const char M365CfgScr1[] PROGMEM = {"Tempomat:        "};
+  const char M365CfgScr2[] PROGMEM = {"Uloz nast. tempomatu"};
+  const char M365CfgScr3[] PROGMEM = {"Zadni svetlo ZAP:"};
+  const char M365CfgScr4[] PROGMEM = {"Uloz nast. z.svetla"};
+  const char M365CfgScr5[] PROGMEM = {"Rekuperace:  "};
+  const char M365CfgScr6[] PROGMEM = {"Uloz nast. rekuper."};
+  const char M365CfgScr8[] PROGMEM = {"< Zpet"};
+  const char M365CfgScr7[] PROGMEM = {"Velikost kol:   "};
+
+  const char l_85inch[] PROGMEM = {" 8,5\""};
+  const char l_10inch[] PROGMEM = {"  10\""};
+
+  const char l_Weak[] PROGMEM =   {"  SLABA"};
+  const char l_Medium[] PROGMEM = {"STREDNI"};
+  const char l_Strong[] PROGMEM = {"  SILNA"};
+
+  const char l_Yes[] PROGMEM = {"ANO"};
+  const char l_No[] PROGMEM =  {" NE"};
+  const char l_On[] PROGMEM =  {"ZAP"};
+  const char l_Off[] PROGMEM = {"VYP"};
+
+  const char l_km[] PROGMEM = {"km"};
+  const char l_kmh[] PROGMEM = {"km/h"};
+  const char l_mah[] PROGMEM = {"mAh"};
+  const char l_v[] PROGMEM = {"V"};
+  const char l_a[] PROGMEM = {"A"};
+  const char l_c[] PROGMEM = {"C"};
+  const char l_t[] PROGMEM = {"T"};
+  
+  #endif
