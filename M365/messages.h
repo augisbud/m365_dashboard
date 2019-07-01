@@ -14,17 +14,17 @@
 class MessagesClass
 {
   private:
-    unsigned char messages[MAX_MESSAGES];
-    unsigned char broadcast[MAX_BROADCAST];
+    uint8_t messages[MAX_MESSAGES];
+    uint8_t broadcast[MAX_BROADCAST];
 
   public:
     MessagesClass();
-    void Post(unsigned char);
-    unsigned char Get(unsigned char);
-    unsigned char Peek(unsigned char); //for sniffer
+    void Post(uint8_t);
+    uint8_t Get(uint8_t);
+    uint8_t Peek(uint8_t); //for sniffer
     void Process();
-    void PostBroadcast(unsigned char);
-    unsigned char GetBroadcast(unsigned char);
+    void PostBroadcast(uint8_t);
+    uint8_t GetBroadcast(uint8_t);
     void ProcessBroadcast();
 };
 
