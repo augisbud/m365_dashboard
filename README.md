@@ -4,7 +4,7 @@
 
 # Products Used  
 Arduino Pro Mini    
-I2C OLED 0.96" Screen    
+I2C OLED 0.96" or 1.3" Screen
 FTD1232 Usb Programmer   
 3d Printed Bracket  
 1N4148 Diode  
