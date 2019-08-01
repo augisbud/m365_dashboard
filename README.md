@@ -10,7 +10,9 @@ FTD1232 Usb Programmer
 1N4148 Diode  
 0.25w 120ohm Resistor       
 
-Estimated price is around 10$ (Inluding Printed Parts).
+Estimated price is around 20$ (Inluding Printed Parts).
+
+Knowing the price is around 20$ you can get the Xiaomi M365 Pro top panel from aliexpress for around the same price and a better look, unless you need additional features just go for the pro display.
 
 # Flashing  
 ![alt text](https://i.imgur.com/DpPkvJz.jpg)  
