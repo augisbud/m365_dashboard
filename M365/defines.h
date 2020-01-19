@@ -53,8 +53,8 @@ bool cfgCruise = false;
 bool cfgTailight = false;
 uint8_t cfgKERS = 0;
 
-volatile uint8_t oldBrakeVal = -1;
-volatile uint8_t oldThrottleVal = -1;
+volatile int16_t oldBrakeVal = -1;
+volatile int16_t oldThrottleVal = -1;
 volatile bool btnPressed = false;
 bool bAlarm = false;
 
