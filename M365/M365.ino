@@ -46,9 +46,11 @@ void setup() {
   Wire.begin();
   Wire.setClock(400000L);
   display.begin(&Adafruit128x64, 0x3C);
+  //display.begin(&SH1106_128x64, 0x3C); // if you use 1.3" display
 #endif
 #ifdef DISPLAY_SPI
   display.begin(&Adafruit128x64, PIN_CS, PIN_DC, PIN_RST);
+  //display.begin(&SH1106_128x64, PIN_CS, PIN_DC, PIN_RST); // if you use 1.3" display
 #endif
   // Uncomment to invert the screen. Useful for better vision on the yellow / blue screens
   // display.displayRemap(true);
