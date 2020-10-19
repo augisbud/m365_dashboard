@@ -1,4 +1,4 @@
-# Xiaomi M365 Display 
+# Xiaomi M365 Display [This project is no longer maintained, because I don't have a platform to test it. I have moved on to motorcycles.]
 
 <img src="https://user-images.githubusercontent.com/5514002/56957966-22138500-6b49-11e9-8e42-26d0758b6d00.jpg" width="200" height="264" />
 
